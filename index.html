@@ -10,118 +10,91 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Prakriti | Home</title>
+    <title>RAWrSync | Home</title>
 </head>
 
 <body>
+    <!-- Navigation Bar -->
     <div class="navBar">
-        <img src="prakriti-logo-img.png" class="prakriti-logo">
+        <div class="logo-container">
+            <h1 class="logo-text">RAWrSync</h1>
+        </div>
 
-
-
-
+        <!-- Mobile Menu Toggle -->
         <div id="menuToggle">
             <input type="checkbox" />
-
             <div id="menuOverlay"></div>
-
             <span></span>
             <span></span>
             <span></span>
-
 
             <ul id="menu">
-                <a href="https://suryadash0967.github.io/prakriti-home/">
+                <a href="#home">
                     <li>Home</li>
                 </a>
-                <a href="https://suryadash0967.github.io/prakriti-about/">
+                <a href="#about">
                     <li>About</li>
                 </a>
                 <div class="collections-sidebar-menu">
-
                     <label for="touch">
                         <li>Collections<i class='bx bxs-chevron-down'></i></li>
                     </label>
-
-
                     <nav>
-
                         <input type="checkbox" id="touch">
-
                         <ul class="slide">
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/sabai-treasures-page/">
+                            <a class="collections-redirect" href="#collection1">
                                 <li>
-                                    <img src="sabai-treasures.png" class="collections-img">
-                                    <div>Sabai Treasures</div>
+                                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>Digital Art</div>
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/bamboo-bliss-page/">
+                            <a class="collections-redirect" href="#collection2">
                                 <li>
-                                    <img src="bamboo-bliss.png" class="collections-img">
-                                    <div>Bamboo Bliss</div>
+                                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>Photography</div>
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/terra-touch-page/">
+                            <a class="collections-redirect" href="#collection3">
                                 <li>
-                                    <img src="terra-touch.png" class="collections-img">
-                                    <div>Terra Touch</div>
+                                    <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>Design</div>
                                 </li>
                             </a>
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/loom-legacy-loom-legacy-page/">
+                            <a class="collections-redirect" href="#collection4">
                                 <li>
-                                    <img src="loom-legacy.png" class="collections-img">
-                                    <div>Loom Legacy</div>
+                                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>Creative</div>
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/metal-essence-page/">
+                            <a class="collections-redirect" href="#collection5">
                                 <li>
-                                    <img src="metal-essence.png" class="collections-img">
-                                    <div>Metal Essence</div>
+                                    <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>Modern Art</div>
                                 </li>
                             </a>
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/prakriti-collections-page/">
+                            <a class="collections-redirect" href="#collection6">
                                 <li>
-                                    <img src="prakriti-collections.jpeg" class="collections-img">
-                                    <div>Prakriti Collection</div>
+                                    <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    <div>RAWrSync Collection</div>
                                 </li>
                             </a>
                         </ul>
-
                     </nav>
-
-
-
-
-
-
-
                 </div>
-
-
-                <a href="https://suryadash0967.github.io/prakriti-help-support/">
-                    <li>Help & Support</li>
+                <a href="#creators">
+                    <li>Creators</li>
                 </a>
-                <a href="https://suryadash0967.github.io/prakriti-orders/">
-                    <li>Orders <i class="fa-solid fa-bag-shopping"></i></li>
+                <a href="#help">
+                    <li>Help & Support</li>
                 </a>
             </ul>
         </div>
 
-
-
-
-
-
+        <!-- Desktop Navigation -->
         <div class="navbar-navigations">
-            <div class="options home"><a href="https://suryadash0967.github.io/prakriti-home/">Home</a></div>
-            <div class="options about"><a href="https://suryadash0967.github.io/prakriti-about/">About</a></div>
+            <div class="options home"><a href="#home">Home</a></div>
+            <div class="options about"><a href="#about">About</a></div>
             <div class="options collections">
-
-
-
                 <span>Collections</span>
                 <i class='bx bxs-chevron-down'></i>
                 <div class="dots" onclick="this.classList.toggle('active');">
@@ -131,259 +104,389 @@
                     </div>
                     <div class="list">
                         <ul>
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/sabai-treasures-page/">
+                            <a class="collections-redirect" href="#collection1">
                                 <li>
-                                    <img src="sabai-treasures.png" class="collections-img">
-                                    Sabai Treasures
+                                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    Digital Art
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/bamboo-bliss-page/">
+                            <a class="collections-redirect" href="#collection2">
                                 <li>
-                                    <img src="bamboo-bliss.png" class="collections-img">
-                                    Bamboo Bliss
+                                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    Photography
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/terra-touch-page/">
+                            <a class="collections-redirect" href="#collection3">
                                 <li>
-                                    <img src="terra-touch.png" class="collections-img">
-                                    Terra Touch
+                                    <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    Design
                                 </li>
                             </a>
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/loom-legacy-loom-legacy-page/">
+                            <a class="collections-redirect" href="#collection4">
                                 <li>
-                                    <img src="loom-legacy.png" class="collections-img">
-                                    Loom Legacy
+                                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    Creative
                                 </li>
                             </a>
-                            <a class="collections-redirect" href="https://suryadash0967.github.io/metal-essence-page/">
+                            <a class="collections-redirect" href="#collection5">
                                 <li>
-                                    <img src="metal-essence.png" class="collections-img">
-                                    Metal Essence
+                                    <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    Modern Art
                                 </li>
                             </a>
-                            <a class="collections-redirect"
-                                href="https://suryadash0967.github.io/prakriti-collections-page/">
+                            <a class="collections-redirect" href="#collection6">
                                 <li>
-                                    <img src="prakriti-collections.jpeg" class="collections-img">
-                                    Prakriti Collection
+                                    <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
+                                    RAWrSync Collection
                                 </li>
                             </a>
-
                         </ul>
                     </div>
                 </div>
                 <div class="cursor" onclick="document.querySelector('.dots').classList.toggle('active');"></div>
-
-
-
-
-
-
             </div>
-
-            <div class="options wishlist"><a href="https://suryadash0967.github.io/prakriti-help-support/">Help & Support</a></div>
-            <div class="options orders"><a href="https://suryadash0967.github.io/prakriti-orders/">Orders</a></div>
+            <div class="options creators"><a href="#creators">Creators</a></div>
+            <div class="options help"><a href="#help">Help & Support</a></div>
         </div>
     </div>
 
-
-
     <div class="gap"></div>
 
-
-
-
+    <!-- Main Content -->
     <div class="page">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="sliding">
+                <div class="w3-content w3-section">
+                    <div class="collections-left-wrapper">
+                        <a href="#collection1">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Digital Art">
+                                Digital Art
+                            </div>
+                        </a>
+                        <a href="#collection2">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Photography">
+                                Photography
+                            </div>
+                        </a>
+                        <a href="#collection3">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Design">
+                                Design
+                            </div>
+                        </a>
+                    </div>
 
-        <div class="sliding">
-            <div class="w3-content w3-section">
-                <div class="collections-left-wrapper">
-                    <a href="https://suryadash0967.github.io/sabai-treasures-page/">
-                        <div class="home-collection">
-                            <img src="sabai-treasures.png" alt="">
-                            Sabai Treasures
-                        </div>
-                    </a>
-                    <a href="https://suryadash0967.github.io/bamboo-bliss-page/">
-                        <div class="home-collection">
-                            <img src="bamboo-bliss.png" alt="">
-                            Bamboo Bliss
-                        </div>
-                    </a>
-                    <a href="https://suryadash0967.github.io/terra-touch-page/">
-                        <div class="home-collection">
-                            <img src="terra-touch.png" alt="">
-                            Terra Touch
-                        </div>
-                    </a>
-                </div>
+                    <img class="mySlides w3-animate-top" src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
+                    <img class="mySlides w3-animate-bottom" src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
+                    <img class="mySlides w3-animate-top" src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
+                    <img class="mySlides w3-animate-bottom" src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
 
-                <img class="mySlides w3-animate-top" src="img1.jpg" style="width:950px; height: 500px;">
-                <img class="mySlides w3-animate-bottom" src="img2.jpg" style="width:950px; height: 500px;">
-                <img class="mySlides w3-animate-top" src="img3.jpg" style="width:950px; height: 500px;">
-                <img class="mySlides w3-animate-bottom" src="img2.jpg" style="width:950px; height: 500px;">
-
-                <div class="collections-right-wrapper">
-                    <a href="https://suryadash0967.github.io/loom-legacy-loom-legacy-page/">
-                        <div class="home-collection">
-                            <img src="loom-legacy.png" alt="">
-                            Loom Legacy
-                        </div>
-                    </a>
-                    <a href="https://suryadash0967.github.io/metal-essence-page/">
-                        <div class="home-collection">
-                            <img src="metal-essence.png" alt="">
-                            Metal Essence
-                        </div>
-                    </a>
-                    <a href="https://suryadash0967.github.io/prakriti-collections-page/">
-                        <div class="home-collection">
-                            <img src="prakriti-collections.jpeg" alt="">
-                            Prakriti Collections
-                        </div>
-                    </a>
+                    <div class="collections-right-wrapper">
+                        <a href="#collection4">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Creative">
+                                Creative
+                            </div>
+                        </a>
+                        <a href="#collection5">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Modern Art">
+                                Modern Art
+                            </div>
+                        </a>
+                        <a href="#collection6">
+                            <div class="home-collection">
+                                <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="RAWrSync Collections">
+                                RAWrSync Collections
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-
-        <div class="about-heading">
-            <h1>ABOUT</h1>
-        </div>
-        <div class="about-underline"></div>
-        <div class="about-description-wrap">
-            <div class="prakriti-about-description">
-                <div class="what-is-prakriti">
-                    <h2 class="what-is-prakriti-heading">What is <h class="samarkan-prakriti"> prakriti</h> ?</h2>
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-heading">
+                <h1>ABOUT</h1>
+            </div>
+            <div class="about-underline"></div>
+            <div class="about-description-wrap">
+                <div class="about-description">
+                    <div class="what-is-rawrsync">
+                        <h2 class="what-is-rawrsync-heading">What is <span class="brand-name">RAWrSync</span>?</h2>
+                    </div>
+                    <br>
+                    <br>
+                    <p>RAWrSync is more than just a platform — it's a revolutionary journey towards creative synchronization and digital artistry. Our mission is to create a space that not only showcases cutting-edge creative content but also tells the stories of the creators who craft them with passion and innovation. We bridge the gap between raw creativity and synchronized excellence.</p>
                 </div>
-                <br>
-                <br>
-                <p> Prakriti is more than just a marketplace — it's a heartfelt journey towards a sustainable future,
-                    deeply
-                    rooted in the rich traditions of India's household industries. Our mission is to create a platform
-                    that
-                    not only offers eco-friendly products but also tells the stories of the artisans who craft them with
-                    love and dedication.</p>
-
+                <div class="about-description-image">
+                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=500&h=480&fit=crop" class="about-image">
+                </div>
             </div>
-            <div class="about-description-image">
-                <img src="prakriti-about-img.png" class="prakriti-about-image">
+        </section>
+
+        <!-- Creators Section -->
+        <section id="creators" class="creators-section">
+            <div class="creators-heading">
+                <h1>CREATORS</h1>
             </div>
-        </div>
+            <div class="creators-underline"></div>
+            
+            <div class="creators-grid">
+                <!-- Main Creator -->
+                <div class="creator-card main-creator">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Soumya Sagar Nayak">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Soumya Sagar Nayak</h3>
+                        <p class="creator-title">Lead Creator & Founder</p>
+                        <div class="social-badges">
+                            <a href="https://github.com/SoumyaSagarNayak" target="_blank" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/soumya-sagar-nayak-498352295" target="_blank" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:soumyasagarnayak351@gmail.com" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://instagram.com/ice_soum" target="_blank" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Additional Creators -->
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Alex Rivera">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Alex Rivera</h3>
+                        <p class="creator-title">Digital Artist</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Maya Chen">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Maya Chen</h3>
+                        <p class="creator-title">UI/UX Designer</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Jordan Smith">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Jordan Smith</h3>
+                        <p class="creator-title">Photographer</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Zara Ahmed">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Zara Ahmed</h3>
+                        <p class="creator-title">Creative Director</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Ethan Park">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Ethan Park</h3>
+                        <p class="creator-title">Motion Graphics Artist</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Luna Rodriguez">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Luna Rodriguez</h3>
+                        <p class="creator-title">Brand Designer</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Kai Thompson">
+                    </div>
+                    <div class="creator-info">
+                        <h3 class="creator-name">Kai Thompson</h3>
+                        <p class="creator-title">3D Artist</p>
+                        <div class="social-badges">
+                            <a href="#404" class="social-badge github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#404" class="social-badge linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#404" class="social-badge email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#404" class="social-badge instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Badges -->
+            <div class="action-badges">
+                <a href="https://github.com/SoumyaSagarNayak" target="_blank" class="action-badge github-star">
+                    <i class="fab fa-github"></i>
+                    <span>Star on GitHub</span>
+                </a>
+                <a href="mailto:soumyasagarnayak351@gmail.com" class="action-badge feedback">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Feedback</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
         <div class="line-before-footer"></div>
-
         <div class="footer-wrapper">
             <div class="footer-contact">
                 <div class="email">
                     <i class='fa-solid fa-envelope'></i>
-                    <span>care@prakriti.com</span>
+                    <span>hello@rawrsync.com</span>
                 </div>
                 <div class="phone-number">
                     <i class='fa-solid fa-phone'></i>
-                    +91 63768 83999
+                    +1 (555) 123-4567
                 </div>
             </div>
             <div class="footer-categories-wrapper footer-head">
-                <h3>Categories</h3>
+                <h3>Collections</h3>
                 <div style="height: 0.2rem;"></div>
-                <div class="categories"><a href="https://suryadash0967.github.io/sabai-treasures-page/">Sabai
-                        Treasures</a></div>
-                <div class="categories"><a href="https://suryadash0967.github.io/bamboo-bliss-page/">Bambooo Bliss</a>
-                </div>
-                <div class="categories"><a href="https://suryadash0967.github.io/terra-touch-page/">Terra Touch</a>
-                </div>
-                <div class="categories"><a href="https://suryadash0967.github.io/loom-legacy-loom-legacy-page/">Loom
-                        Legacy</a></div>
-                <div class="categories"><a href="https://suryadash0967.github.io/metal-essence-page/">Metal Essence</a>
-                </div>
-                <div class="categories"><a href="https://suryadash0967.github.io/prakriti-collections-page/">Prakriti
-                        Collections</a></div>
+                <div class="categories"><a href="#collection1">Digital Art</a></div>
+                <div class="categories"><a href="#collection2">Photography</a></div>
+                <div class="categories"><a href="#collection3">Design</a></div>
+                <div class="categories"><a href="#collection4">Creative</a></div>
+                <div class="categories"><a href="#collection5">Modern Art</a></div>
+                <div class="categories"><a href="#collection6">RAWrSync Collections</a></div>
             </div>
             <div class="footer-information-wrapper footer-head">
                 <h3>Information</h3>
                 <div style="height: 0.2rem;"></div>
-                <div class="information"><a href="https://suryadash0967.github.io/prakriti-about/">About</a></div>
-
-                <div class="information"><a href="#">Terms & Conditions</a></div>
+                <div class="information"><a href="#about">About</a></div>
+                <div class="information"><a href="#creators">Creators</a></div>
+                <div class="information"><a href="#terms">Terms & Conditions</a></div>
             </div>
             <div class="footer-quick-links-wrapper footer-head">
                 <h3>Quick Links</h3>
                 <div style="height: 0.2rem;"></div>
-                <div class="quick-links"><a href="https://suryadash0967.github.io/prakriti-orders/">Orders</a></div>
-                <div class="quick-links"><a href="https://suryadash0967.github.io/prakriti-about/">About</a></div>
+                <div class="quick-links"><a href="#home">Home</a></div>
+                <div class="quick-links"><a href="#about">About</a></div>
+                <div class="quick-links"><a href="#creators">Creators</a></div>
+                <div class="quick-links"><a href="#help">Help & Support</a></div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-    <script>
-        function myFunction(x) {
-            bigNavBar = document.querySelector(".navbar-navigations");
-
-            if (x.matches) {
-                bigNavBar.remove();
-            }
-        }
-
-        var x = window.matchMedia("(max-width: 880px)")
-
-        myFunction(x);
-
-        x.addEventListener("change", function () {
-            myFunction(x);
-        });
-
-
-
-        function loadMore() {
-            console.log("Loading more content...");
-
-            var caughtUpMessage = document.querySelector(".load-more-message");
-            caughtUpMessage.classList.add('show');
-
-            setTimeout(function () {
-                caughtUpMessage.classList.add('hide');
-                setTimeout(function () {
-                    caughtUpMessage.classList.remove('show', 'hide');
-                }, 300); // Wait for the transition to complete before removing classes
-            }, 5000); // 5000 milliseconds = 5 seconds
-        }
-
-        function handleBuyNowBtnClick() {
-            window.open("https://suryadash0967.github.io/sabai-treasures-bloom-art-wall/");
-        }
-
-
-
-
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) { myIndex = 1 }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 4000);
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
