@@ -1,492 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>ArtNature - Digital Art Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <title>RAWrSync | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-
 <body>
     <!-- Navigation Bar -->
-    <div class="navBar">
-        <div class="logo-container">
-            <h1 class="logo-text">RAWrSync</h1>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
-        <div id="menuToggle">
-            <input type="checkbox" />
-            <div id="menuOverlay"></div>
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <ul id="menu">
-                <a href="#home">
-                    <li>Home</li>
-                </a>
-                <a href="#about">
-                    <li>About</li>
-                </a>
-                <div class="collections-sidebar-menu">
-                    <label for="touch">
-                        <li>Collections<i class='bx bxs-chevron-down'></i></li>
-                    </label>
-                    <nav>
-                        <input type="checkbox" id="touch">
-                        <ul class="slide">
-                            <a class="collections-redirect" href="#collection1">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>Digital Art</div>
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection2">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>Photography</div>
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection3">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>Design</div>
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection4">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>Creative</div>
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection5">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>Modern Art</div>
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection6">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    <div>RAWrSync Collection</div>
-                                </li>
-                            </a>
-                        </ul>
-                    </nav>
-                </div>
-                <a href="#creators">
-                    <li>Creators</li>
-                </a>
-                <a href="#help">
-                    <li>Help & Support</li>
-                </a>
-            </ul>
-        </div>
-
-        <!-- Desktop Navigation -->
-        <div class="navbar-navigations">
-            <div class="options home"><a href="#home">Home</a></div>
-            <div class="options about"><a href="#about">About</a></div>
-            <div class="options collections">
-                <span>Collections</span>
-                <i class='bx bxs-chevron-down'></i>
-                <div class="dots" onclick="this.classList.toggle('active');">
-                    <div class="shadow cut"></div>
-                    <div class="container cut">
-                        <div class="drop cut2"></div>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <a class="collections-redirect" href="#collection1">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    Digital Art
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection2">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    Photography
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection3">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    Design
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection4">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    Creative
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection5">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    Modern Art
-                                </li>
-                            </a>
-                            <a class="collections-redirect" href="#collection6">
-                                <li>
-                                    <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" class="collections-img">
-                                    RAWrSync Collection
-                                </li>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cursor" onclick="document.querySelector('.dots').classList.toggle('active');"></div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>ArtNature</h2>
             </div>
-            <div class="options creators"><a href="#creators">Creators</a></div>
-            <div class="options help"><a href="#help">Help & Support</a></div>
+            
+            <!-- User Count Badge -->
+            <div class="user-count-badge">
+                <i class="fas fa-users"></i>
+                <span id="userCount">0</span> visitors
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#art-types" class="nav-link">Art Types</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#collections" class="nav-link dropdown-toggle" id="collectionsDropdown">
+                        Collections <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#abstract" class="dropdown-item" data-collection="abstract">Abstract</a>
+                        <a href="#nature" class="dropdown-item" data-collection="nature">Nature</a>
+                        <a href="#minimal" class="dropdown-item" data-collection="minimal">Minimal</a>
+                        <a href="#sketch" class="dropdown-item" data-collection="sketch">Sketch</a>
+                        <a href="#digital" class="dropdown-item" data-collection="digital">Digital</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#create-profile" class="nav-link">Create Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            
+            <!-- Mobile Hamburger Menu -->
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-    </div>
-
-    <div class="gap"></div>
+    </nav>
 
     <!-- Main Content -->
-    <div class="page">
-        <!-- Hero Section -->
+    <main>
+        <!-- Hero Section / Home -->
         <section id="home" class="hero-section">
-            <div class="sliding">
-                <div class="w3-content w3-section">
-                    <div class="collections-left-wrapper">
-                        <a href="#collection1">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Digital Art">
-                                Digital Art
-                            </div>
-                        </a>
-                        <a href="#collection2">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Photography">
-                                Photography
-                            </div>
-                        </a>
-                        <a href="#collection3">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Design">
-                                Design
-                            </div>
-                        </a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome to ArtNature</h1>
+                    <p class="hero-subtitle">Where creativity meets nature's inspiration</p>
+                    <p class="hero-description">Discover a world of artistic expression through digital art, photography, and creative designs inspired by the natural world around us.</p>
+                    <button class="cta-button" onclick="scrollToSection('art-types')">
+                        Explore Art <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Nature-inspired digital art" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Creator Profile -->
+        <section class="creator-profile">
+            <div class="container">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Featured Artist Profile" loading="lazy">
                     </div>
-
-                    <img class="mySlides w3-animate-top" src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
-                    <img class="mySlides w3-animate-bottom" src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
-                    <img class="mySlides w3-animate-top" src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
-                    <img class="mySlides w3-animate-bottom" src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=950&h=500&fit=crop" style="width:950px; height: 500px;">
-
-                    <div class="collections-right-wrapper">
-                        <a href="#collection4">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Creative">
-                                Creative
-                            </div>
-                        </a>
-                        <a href="#collection5">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Modern Art">
-                                Modern Art
-                            </div>
-                        </a>
-                        <a href="#collection6">
-                            <div class="home-collection">
-                                <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="RAWrSync Collections">
-                                RAWrSync Collections
-                            </div>
-                        </a>
+                    <div class="profile-info">
+                        <h3>Elena Rodriguez</h3>
+                        <p class="profile-title">Nature-Inspired Digital Artist</p>
+                        <p class="profile-bio">Elena specializes in creating stunning digital artworks that capture the essence of natural landscapes and wildlife. Her work combines traditional artistic techniques with modern digital tools to create immersive experiences. She believes that art should connect people with the beauty of the natural world.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Behance">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="about-heading">
-                <h1>ABOUT</h1>
-            </div>
-            <div class="about-underline"></div>
-            <div class="about-description-wrap">
-                <div class="about-description">
-                    <div class="what-is-rawrsync">
-                        <h2 class="what-is-rawrsync-heading">What is <span class="brand-name">RAWrSync</span>?</h2>
+        <!-- Art Types Section -->
+        <section id="art-types" class="art-types-section">
+            <div class="container">
+                <h2 class="section-title">Art Types</h2>
+                <div class="art-types-grid">
+                    <div class="art-type-card" data-aos="fade-up">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Digital Art</h3>
+                        <p>Explore the limitless possibilities of digital creativity through stunning illustrations, concept art, and digital paintings. Our digital art collection showcases innovative techniques that blend traditional artistic principles with cutting-edge technology. From fantasy landscapes to abstract compositions, each piece tells a unique story through pixels and imagination.</p>
                     </div>
-                    <br>
-                    <br>
-                    <p>RAWrSync is more than just a platform — it's a revolutionary journey towards creative synchronization and digital artistry. Our mission is to create a space that not only showcases cutting-edge creative content but also tells the stories of the creators who craft them with passion and innovation. We bridge the gap between raw creativity and synchronized excellence.</p>
+                    
+                    <div class="art-type-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Photography</h3>
+                        <p>Capture the world's beauty through the lens of talented photographers who specialize in nature, wildlife, and landscape photography. Each photograph in our collection represents a moment frozen in time, showcasing the raw beauty of our natural world. From macro details of flowers to sweeping mountain vistas, these images inspire and connect us to nature.</p>
+                    </div>
+                    
+                    <div class="art-type-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Design</h3>
+                        <p>Discover thoughtful design solutions that merge functionality with aesthetic appeal, inspired by natural forms and patterns. Our design collection includes everything from logo designs and branding to user interface concepts and print materials. Each design draws inspiration from nature's perfect balance of form and function.</p>
+                    </div>
+                    
+                    <div class="art-type-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-icon">
+                            <i class="fas fa-brush"></i>
+                        </div>
+                        <h3>Creative Art</h3>
+                        <p>Experience unique artistic expressions that push boundaries and challenge conventional thinking through mixed media and experimental techniques. This category celebrates the unconventional, featuring artists who dare to explore new mediums and methods. From sculptural installations to interactive art pieces, creativity knows no bounds here.</p>
+                    </div>
+                    
+                    <div class="art-type-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-icon">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <h3>Modern Art</h3>
+                        <p>Contemporary artistic movements that reflect current cultural themes while maintaining timeless appeal through bold colors and innovative compositions. Our modern art collection features works that speak to today's world while drawing inspiration from nature's timeless patterns. These pieces challenge viewers to see familiar subjects in new ways.</p>
+                    </div>
+                    
+                    <div class="art-type-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Collections</h3>
+                        <p>Curated series of artworks that explore specific themes, techniques, or artistic journeys, creating cohesive visual narratives that tell compelling stories. Each collection represents a deep dive into particular subjects or styles, allowing viewers to experience the evolution of ideas and techniques across multiple related works.</p>
+                    </div>
                 </div>
-                <div class="about-description-image">
-                    <img src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=500&h=480&fit=crop" class="about-image">
+            </div>
+        </section>
+
+        <!-- Collections Display Section -->
+        <section id="collections" class="collections-section">
+            <div class="container">
+                <h2 class="section-title">Featured Collections</h2>
+                <div class="collection-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="abstract">Abstract</button>
+                    <button class="filter-btn" data-filter="nature">Nature</button>
+                    <button class="filter-btn" data-filter="minimal">Minimal</button>
+                    <button class="filter-btn" data-filter="sketch">Sketch</button>
+                    <button class="filter-btn" data-filter="digital">Digital</button>
+                </div>
+                <div class="collections-grid" id="collectionsGrid">
+                    <!-- Collection items will be populated by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Creators Section -->
-        <section id="creators" class="creators-section">
-            <div class="creators-heading">
-                <h1>CREATORS</h1>
-            </div>
-            <div class="creators-underline"></div>
-            
-            <div class="creators-grid">
-                <!-- Main Creator -->
-                <div class="creator-card main-creator">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Soumya Sagar Nayak">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Soumya Sagar Nayak</h3>
-                        <p class="creator-title">Lead Creator & Founder</p>
-                        <div class="social-badges">
-                            <a href="https://github.com/SoumyaSagarNayak" target="_blank" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/soumya-sagar-nayak-498352295" target="_blank" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="mailto:soumyasagarnayak351@gmail.com" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="https://instagram.com/ice_soum" target="_blank" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
+        <!-- Create Profile Section -->
+        <section id="create-profile" class="create-profile-section">
+            <div class="container">
+                <h2 class="section-title">Create Your Artist Profile</h2>
+                <div class="profile-form-container">
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="artistName">Artist Name *</label>
+                            <input type="text" id="artistName" name="artistName" required>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profilePicture">Profile Picture</label>
+                            <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                            <div class="file-upload-preview" id="imagePreview"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artistBio">Artist Bio *</label>
+                            <textarea id="artistBio" name="artistBio" rows="4" placeholder="Tell us about your artistic journey and inspiration..." required></textarea>
+                            <span class="error-message" id="bioError"></span>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-user-plus"></i> Create Profile
+                        </button>
+                    </form>
+                    
+                    <!-- Profile Preview -->
+                    <div class="profile-preview" id="profilePreview" style="display: none;">
+                        <h3>Profile Preview</h3>
+                        <div class="preview-card">
+                            <div class="preview-image" id="previewImage">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="preview-info">
+                                <h4 id="previewName">Artist Name</h4>
+                                <p id="previewBio">Artist bio will appear here...</p>
+                            </div>
+                        </div>
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            Profile created successfully!
                         </div>
                     </div>
                 </div>
-
-                <!-- Additional Creators -->
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Alex Rivera">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Alex Rivera</h3>
-                        <p class="creator-title">Digital Artist</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Maya Chen">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Maya Chen</h3>
-                        <p class="creator-title">UI/UX Designer</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Jordan Smith">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Jordan Smith</h3>
-                        <p class="creator-title">Photographer</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Zara Ahmed">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Zara Ahmed</h3>
-                        <p class="creator-title">Creative Director</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Ethan Park">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Ethan Park</h3>
-                        <p class="creator-title">Motion Graphics Artist</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Luna Rodriguez">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Luna Rodriguez</h3>
-                        <p class="creator-title">Brand Designer</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="creator-card">
-                    <div class="creator-avatar">
-                        <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Kai Thompson">
-                    </div>
-                    <div class="creator-info">
-                        <h3 class="creator-name">Kai Thompson</h3>
-                        <p class="creator-title">3D Artist</p>
-                        <div class="social-badges">
-                            <a href="#404" class="social-badge github">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#404" class="social-badge linkedin">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#404" class="social-badge email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#404" class="social-badge instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Badges -->
-            <div class="action-badges">
-                <a href="https://github.com/SoumyaSagarNayak" target="_blank" class="action-badge github-star">
-                    <i class="fab fa-github"></i>
-                    <span>Star on GitHub</span>
-                </a>
-                <a href="mailto:soumyasagarnayak351@gmail.com" class="action-badge feedback">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>Send Feedback</span>
-                </a>
             </div>
         </section>
 
-        <!-- Footer -->
-        <div class="line-before-footer"></div>
-        <div class="footer-wrapper">
-            <div class="footer-contact">
-                <div class="email">
-                    <i class='fa-solid fa-envelope'></i>
-                    <span>hello@rawrsync.com</span>
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Connect With Us</h3>
+                        <p>We'd love to hear from you! Whether you're an artist looking to showcase your work or an art enthusiast seeking inspiration, feel free to reach out.</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@artnature.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Art Street, Creative City, CC 12345</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Pinterest">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div class="phone-number">
-                    <i class='fa-solid fa-phone'></i>
-                    +1 (555) 123-4567
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ArtNature</h3>
+                    <p>Connecting artists and art lovers through nature-inspired creativity.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#art-types">Art Types</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-categories-wrapper footer-head">
-                <h3>Collections</h3>
-                <div style="height: 0.2rem;"></div>
-                <div class="categories"><a href="#collection1">Digital Art</a></div>
-                <div class="categories"><a href="#collection2">Photography</a></div>
-                <div class="categories"><a href="#collection3">Design</a></div>
-                <div class="categories"><a href="#collection4">Creative</a></div>
-                <div class="categories"><a href="#collection5">Modern Art</a></div>
-                <div class="categories"><a href="#collection6">RAWrSync Collections</a></div>
-            </div>
-            <div class="footer-information-wrapper footer-head">
-                <h3>Information</h3>
-                <div style="height: 0.2rem;"></div>
-                <div class="information"><a href="#about">About</a></div>
-                <div class="information"><a href="#creators">Creators</a></div>
-                <div class="information"><a href="#terms">Terms & Conditions</a></div>
-            </div>
-            <div class="footer-quick-links-wrapper footer-head">
-                <h3>Quick Links</h3>
-                <div style="height: 0.2rem;"></div>
-                <div class="quick-links"><a href="#home">Home</a></div>
-                <div class="quick-links"><a href="#about">About</a></div>
-                <div class="quick-links"><a href="#creators">Creators</a></div>
-                <div class="quick-links"><a href="#help">Help & Support</a></div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ArtNature. All rights reserved.</p>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
