@@ -180,8 +180,26 @@ class MapperSync {
                 },
                 stats: { countries: 54, population: '1.4B', area: '30.3M km²' }
             },
-            'oceania': {
-                name: 'Oceania',
+            'antartica': {
+    name: 'Antarctica',
+    description: 'The coldest, driest, and windiest continent, almost entirely covered by ice and dedicated to scientific research.',
+    countries: {
+        'none': {
+            name: 'No Sovereign Countries',
+            description: 'Antarctica is not owned by any one nation. Governed by the Antarctic Treaty System, it is a place for peace and science.',
+            states: {
+                'research-zones': {
+                    name: 'Research Zones',
+                    cities: ['McMurdo Station (USA)', 'Amundsen-Scott South Pole Station (USA)', 'Vostok Station (Russia)', 'Concordia Station (France/Italy)', 'Maitri (India)']
+                }
+            }
+        }
+    },
+    stats: { countries: 0, population: '~1,000 (winter), ~5,000 (summer)', area: '14M km²' }
+},
+
+            'australia': {
+                name: 'Australia',
                 description: 'A region of islands in the Pacific Ocean, including Australia and numerous island nations.',
                 countries: {
                     'australia': {
@@ -210,33 +228,43 @@ class MapperSync {
     // Initialize Random Facts
     initRandomFacts() {
         this.randomFacts = [
-            "Russia is the largest country in the world, covering over 17 million square kilometers!",
-            "The Pacific Ocean is larger than all land masses combined.",
-            "Antarctica is the driest continent on Earth, receiving less precipitation than most deserts.",
-            "The Sahara Desert is roughly the size of the entire United States.",
-            "Mount Everest grows about 4 millimeters taller each year due to tectonic activity.",
-            "The Amazon River is longer than the distance from New York to Rome.",
-            "Australia is the only country that is also a continent.",
-            "The Dead Sea is actually a lake and is the lowest point on Earth's surface.",
-            "Greenland is the world's largest island that is not a continent.",
-            "The Mariana Trench is deeper than Mount Everest is tall.",
-            "Africa is home to over 2,000 languages, more than any other continent.",
-            "The Nile River flows northward, which is unusual for most rivers.",
-            "Japan consists of 6,852 islands, though only about 430 are inhabited.",
-            "The Great Wall of China is not visible from space with the naked eye, contrary to popular belief.",
-            "Madagascar is home to 5% of all plant and animal species, 80% of which are found nowhere else.",
-            "The Arctic Ocean is the smallest and shallowest of the world's five major oceans.",
-            "Vatican City is the smallest country in the world, at just 0.17 square miles.",
-            "The Andes is the longest mountain range in the world, stretching over 7,000 kilometers.",
-            "Lake Baikal in Russia contains about 20% of the world's unfrozen fresh water.",
-            "The equator passes through 13 countries across three continents."
+           "🇷🇺 Russia is the largest country in the world, covering over 17 million square kilometers!",
+  "🌊 The Pacific Ocean is larger than all land masses combined.",
+  "❄️ Antarctica is the driest continent on Earth, receiving less precipitation than most deserts.",
+  "🏜️ The Sahara Desert is roughly the size of the entire United States.",
+  "🏔️ Mount Everest grows about 4 millimeters taller each year due to tectonic activity.",
+  "🌧️ The Amazon River is longer than the distance from New York to Rome.",
+  "🇦🇺 Australia is the only country that is also a continent.",
+  "🧂 The Dead Sea is actually a lake and is the lowest point on Earth's surface.",
+  "🧊 Greenland is the world's largest island that is not a continent.",
+  "⬇️ The Mariana Trench is deeper than Mount Everest is tall.",
+  "🗣️ Africa is home to over 2,000 languages, more than any other continent.",
+  "🧭 The Nile River flows northward, which is unusual for most rivers.",
+  "🏝️ Japan consists of 6,852 islands, though only about 430 are inhabited.",
+  "🚫 The Great Wall of China is not visible from space with the naked eye, contrary to popular belief.",
+  "🐒 Madagascar is home to 5% of all plant and animal species, 80% of which are found nowhere else.",
+  "🌊 The Arctic Ocean is the smallest and shallowest of the world's five major oceans.",
+  "⛪ Vatican City is the smallest country in the world, at just 0.17 square miles.",
+  "⛰️ The Andes is the longest mountain range in the world, stretching over 7,000 kilometers.",
+  "💧 Lake Baikal in Russia contains about 20% of the world's unfrozen fresh water.",
+  "🌍 The equator passes through 13 countries across three continents.",
+  "🌋 Iceland has more active volcanoes than football teams — and runs almost entirely on renewable energy.",
+  "🇨🇦 Canada has the longest coastline in the world — over 202,000 kilometers!",
+  "🌐 Africa is the only continent located in all four hemispheres: North, South, East, and West.",
+  "🕐 China has only one official time zone, even though it spans five geographically.",
+  "🔥 The Danakil Depression in Ethiopia is one of the hottest and most alien-looking places on Earth.",
+  "📏 Chile is the skinniest country in the world — over 4,300 km long but only 177 km wide!",
+  "🤳 The Ural Mountains in Russia divide Europe and Asia — one selfie = two continents!",
+  "🏖️ Indonesia has over 17,000 islands, but less than half are named or inhabited.",
+  "🐅 Bangladesh has the world’s largest river delta — and swimming tigers!",
+  "🏜️ The Atacama Desert in Chile is so dry, some parts haven’t seen rain in hundreds of years!"
         ];
     }
 
     // User Count Functionality
     initUserCount() {
         const storedCount = localStorage.getItem('mapperSyncUserCount');
-        this.userCount = storedCount ? parseInt(storedCount) : Math.floor(Math.random() * 2000) + 1000;
+        this.userCount = storedCount ? parseInt(storedCount) : Math.floor(Math.random() * 20) + 100;
         
         this.userCount++;
         localStorage.setItem('mapperSyncUserCount', this.userCount.toString());
@@ -579,7 +607,8 @@ class MapperSync {
             'europe': '🏰',
             'asia': '🏯',
             'africa': '🦁',
-            'oceania': '🏝️'
+            'australia': '🏝️',
+            'antartica': '☃️'
         };
         return icons[continentId] || '🌍';
     }
