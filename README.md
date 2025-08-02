@@ -115,7 +115,7 @@ _No React, no jQuery, no APIs, no external frameworks._
 
 
 <pre>
-📁 ForIBM/
+📁 MapperSync/
 ├── 📁 assets/           # Images, icons, SVGs  
 ├── 📁 css/              # All stylesheets  
 │   └── styles.css  
@@ -130,5 +130,5 @@ _No React, no jQuery, no APIs, no external frameworks._
 
  Clone the repo:  
    ```bash
-   git clone https://github.com/SoumyaSagarNayak/ForIBM.git
+   git clone https://github.com/SoumyaSagarNayak/MapperSync.git
    ```
