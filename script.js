@@ -1,40 +1,246 @@
-// Nature-Inspired Art Portfolio JavaScript
+// MapperSync - Interactive World Mapping JavaScript
 
-class ArtPortfolio {
+class MapperSync {
     constructor() {
         this.userCount = 0;
-        this.collections = [];
-        this.currentFilter = 'all';
+        this.currentView = 'continents';
+        this.currentContinent = null;
+        this.currentCountry = null;
+        this.navigationHistory = [];
+        this.mapData = {};
+        this.randomFacts = [];
         this.init();
     }
 
     init() {
+        this.initMapData();
+        this.initRandomFacts();
         this.initUserCount();
         this.initNavigation();
-        this.initCollections();
+        this.initGlobeInteraction();
+        this.initExplorer();
         this.initProfileForm();
         this.initContactForm();
+        this.initThemeToggle();
         this.initScrollAnimations();
         this.initSmoothScrolling();
-        this.loadStoredProfile();
+        this.loadStoredPreferences();
+        this.generateRandomFact();
+        this.initMapsCarousel();
+    }
+
+    // Initialize Map Data
+    initMapData() {
+        this.mapData = {
+            'north-america': {
+                name: 'North America',
+                description: 'A continent in the Northern Hemisphere, known for its diverse landscapes from Arctic tundra to tropical beaches.',
+                countries: {
+                    'united-states': {
+                        name: 'United States',
+                        description: 'A federal republic with 50 states, known for its cultural diversity and economic power.',
+                        states: {
+                            'california': { name: 'California', cities: ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento'] },
+                            'texas': { name: 'Texas', cities: ['Houston', 'Dallas', 'Austin', 'San Antonio'] },
+                            'new-york': { name: 'New York', cities: ['New York City', 'Albany', 'Buffalo', 'Rochester'] },
+                            'florida': { name: 'Florida', cities: ['Miami', 'Orlando', 'Tampa', 'Jacksonville'] }
+                        }
+                    },
+                    'canada': {
+                        name: 'Canada',
+                        description: 'The second-largest country by land area, known for its natural beauty and multicultural society.',
+                        states: {
+                            'ontario': { name: 'Ontario', cities: ['Toronto', 'Ottawa', 'Hamilton', 'London'] },
+                            'quebec': { name: 'Quebec', cities: ['Montreal', 'Quebec City', 'Laval', 'Gatineau'] },
+                            'british-columbia': { name: 'British Columbia', cities: ['Vancouver', 'Victoria', 'Surrey', 'Burnaby'] }
+                        }
+                    },
+                    'mexico': {
+                        name: 'Mexico',
+                        description: 'A country rich in ancient civilizations, vibrant culture, and diverse ecosystems.',
+                        states: {
+                            'jalisco': { name: 'Jalisco', cities: ['Guadalajara', 'Zapopan', 'Tlaquepaque', 'Tonalá'] },
+                            'nuevo-leon': { name: 'Nuevo León', cities: ['Monterrey', 'Guadalupe', 'San Nicolás', 'Escobedo'] }
+                        }
+                    }
+                },
+                stats: { countries: 23, population: '579M', area: '24.7M km²' }
+            },
+            'south-america': {
+                name: 'South America',
+                description: 'Home to the Amazon rainforest and the Andes mountains, rich in biodiversity and culture.',
+                countries: {
+                    'brazil': {
+                        name: 'Brazil',
+                        description: 'The largest country in South America, famous for the Amazon rainforest and vibrant culture.',
+                        states: {
+                            'sao-paulo': { name: 'São Paulo', cities: ['São Paulo', 'Guarulhos', 'Campinas', 'São Bernardo'] },
+                            'rio-de-janeiro': { name: 'Rio de Janeiro', cities: ['Rio de Janeiro', 'São Gonçalo', 'Duque de Caxias', 'Nova Iguaçu'] }
+                        }
+                    },
+                    'argentina': {
+                        name: 'Argentina',
+                        description: 'Known for tango, beef, and diverse landscapes from Patagonia to the Pampas.',
+                        states: {
+                            'buenos-aires': { name: 'Buenos Aires', cities: ['Buenos Aires', 'La Plata', 'Mar del Plata', 'Bahía Blanca'] }
+                        }
+                    }
+                },
+                stats: { countries: 12, population: '434M', area: '17.8M km²' }
+            },
+            'europe': {
+                name: 'Europe',
+                description: 'A continent rich in history, art, and culture, with diverse languages and traditions.',
+                countries: {
+                    'france': {
+                        name: 'France',
+                        description: 'Known for its art, cuisine, fashion, and iconic landmarks like the Eiffel Tower.',
+                        states: {
+                            'ile-de-france': { name: 'Île-de-France', cities: ['Paris', 'Boulogne-Billancourt', 'Saint-Denis', 'Argenteuil'] },
+                            'provence': { name: 'Provence-Alpes-Côte d\'Azur', cities: ['Marseille', 'Nice', 'Toulon', 'Aix-en-Provence'] }
+                        }
+                    },
+                    'germany': {
+                        name: 'Germany',
+                        description: 'A central European country known for its engineering, history, and cultural contributions.',
+                        states: {
+                            'bavaria': { name: 'Bavaria', cities: ['Munich', 'Nuremberg', 'Augsburg', 'Regensburg'] },
+                            'north-rhine-westphalia': { name: 'North Rhine-Westphalia', cities: ['Cologne', 'Düsseldorf', 'Dortmund', 'Essen'] }
+                        }
+                    },
+                    'italy': {
+                        name: 'Italy',
+                        description: 'Famous for its art, architecture, cuisine, and historical significance in Western civilization.',
+                        states: {
+                            'lazio': { name: 'Lazio', cities: ['Rome', 'Latina', 'Guidonia', 'Fiumicino'] },
+                            'lombardy': { name: 'Lombardy', cities: ['Milan', 'Brescia', 'Monza', 'Bergamo'] }
+                        }
+                    }
+                },
+                stats: { countries: 44, population: '748M', area: '10.2M km²' }
+            },
+            'asia': {
+                name: 'Asia',
+                description: 'The largest and most populous continent, home to diverse cultures and ancient civilizations.',
+                countries: {
+                    'china': {
+                        name: 'China',
+                        description: 'The most populous country in the world with a rich history spanning thousands of years.',
+                        states: {
+                            'beijing': { name: 'Beijing', cities: ['Beijing', 'Chaoyang', 'Haidian', 'Fengtai'] },
+                            'shanghai': { name: 'Shanghai', cities: ['Shanghai', 'Pudong', 'Huangpu', 'Xuhui'] }
+                        }
+                    },
+                    'japan': {
+                        name: 'Japan',
+                        description: 'An island nation known for its technology, culture, and blend of traditional and modern life.',
+                        states: {
+                            'tokyo': { name: 'Tokyo', cities: ['Tokyo', 'Yokohama', 'Osaka', 'Nagoya'] },
+                            'osaka': { name: 'Osaka', cities: ['Osaka', 'Sakai', 'Higashiosaka', 'Hirakata'] }
+                        }
+                    },
+                    'india': {
+                        name: 'India',
+                        description: 'A diverse country with numerous languages, religions, and cultural traditions.',
+                        states: {
+                            'maharashtra': { name: 'Maharashtra', cities: ['Mumbai', 'Pune', 'Nagpur', 'Thane'] },
+                            'uttar-pradesh': { name: 'Uttar Pradesh', cities: ['Lucknow', 'Kanpur', 'Ghaziabad', 'Agra'] }
+                        }
+                    }
+                },
+                stats: { countries: 48, population: '4.6B', area: '44.6M km²' }
+            },
+            'africa': {
+                name: 'Africa',
+                description: 'The cradle of humanity, known for its wildlife, diverse cultures, and natural resources.',
+                countries: {
+                    'nigeria': {
+                        name: 'Nigeria',
+                        description: 'The most populous country in Africa, known for its oil resources and cultural diversity.',
+                        states: {
+                            'lagos': { name: 'Lagos', cities: ['Lagos', 'Ikeja', 'Ikorodu', 'Epe'] },
+                            'kano': { name: 'Kano', cities: ['Kano', 'Fagge', 'Dala', 'Gwale'] }
+                        }
+                    },
+                    'south-africa': {
+                        name: 'South Africa',
+                        description: 'Known for its diverse wildlife, history, and being the southernmost country in Africa.',
+                        states: {
+                            'gauteng': { name: 'Gauteng', cities: ['Johannesburg', 'Pretoria', 'Soweto', 'Randburg'] },
+                            'western-cape': { name: 'Western Cape', cities: ['Cape Town', 'Stellenbosch', 'Paarl', 'George'] }
+                        }
+                    },
+                    'egypt': {
+                        name: 'Egypt',
+                        description: 'Home to ancient pyramids and the Nile River, with a rich pharaonic history.',
+                        states: {
+                            'cairo': { name: 'Cairo', cities: ['Cairo', 'Giza', 'Shubra El Kheima', 'Port Said'] }
+                        }
+                    }
+                },
+                stats: { countries: 54, population: '1.4B', area: '30.3M km²' }
+            },
+            'oceania': {
+                name: 'Oceania',
+                description: 'A region of islands in the Pacific Ocean, including Australia and numerous island nations.',
+                countries: {
+                    'australia': {
+                        name: 'Australia',
+                        description: 'A country and continent known for its unique wildlife and diverse landscapes.',
+                        states: {
+                            'new-south-wales': { name: 'New South Wales', cities: ['Sydney', 'Newcastle', 'Wollongong', 'Maitland'] },
+                            'victoria': { name: 'Victoria', cities: ['Melbourne', 'Geelong', 'Ballarat', 'Bendigo'] },
+                            'queensland': { name: 'Queensland', cities: ['Brisbane', 'Gold Coast', 'Townsville', 'Cairns'] }
+                        }
+                    },
+                    'new-zealand': {
+                        name: 'New Zealand',
+                        description: 'Known for its stunning natural beauty, from mountains to fjords and beaches.',
+                        states: {
+                            'north-island': { name: 'North Island', cities: ['Auckland', 'Wellington', 'Hamilton', 'Tauranga'] },
+                            'south-island': { name: 'South Island', cities: ['Christchurch', 'Dunedin', 'Invercargill', 'Nelson'] }
+                        }
+                    }
+                },
+                stats: { countries: 14, population: '45M', area: '8.6M km²' }
+            }
+        };
+    }
+
+    // Initialize Random Facts
+    initRandomFacts() {
+        this.randomFacts = [
+            "Russia is the largest country in the world, covering over 17 million square kilometers!",
+            "The Pacific Ocean is larger than all land masses combined.",
+            "Antarctica is the driest continent on Earth, receiving less precipitation than most deserts.",
+            "The Sahara Desert is roughly the size of the entire United States.",
+            "Mount Everest grows about 4 millimeters taller each year due to tectonic activity.",
+            "The Amazon River is longer than the distance from New York to Rome.",
+            "Australia is the only country that is also a continent.",
+            "The Dead Sea is actually a lake and is the lowest point on Earth's surface.",
+            "Greenland is the world's largest island that is not a continent.",
+            "The Mariana Trench is deeper than Mount Everest is tall.",
+            "Africa is home to over 2,000 languages, more than any other continent.",
+            "The Nile River flows northward, which is unusual for most rivers.",
+            "Japan consists of 6,852 islands, though only about 430 are inhabited.",
+            "The Great Wall of China is not visible from space with the naked eye, contrary to popular belief.",
+            "Madagascar is home to 5% of all plant and animal species, 80% of which are found nowhere else.",
+            "The Arctic Ocean is the smallest and shallowest of the world's five major oceans.",
+            "Vatican City is the smallest country in the world, at just 0.17 square miles.",
+            "The Andes is the longest mountain range in the world, stretching over 7,000 kilometers.",
+            "Lake Baikal in Russia contains about 20% of the world's unfrozen fresh water.",
+            "The equator passes through 13 countries across three continents."
+        ];
     }
 
     // User Count Functionality
     initUserCount() {
-        // Get stored count or start from 0
-        const storedCount = localStorage.getItem('artPortfolioUserCount');
-        this.userCount = storedCount ? parseInt(storedCount) : Math.floor(Math.random() * 1000) + 500;
+        const storedCount = localStorage.getItem('mapperSyncUserCount');
+        this.userCount = storedCount ? parseInt(storedCount) : Math.floor(Math.random() * 2000) + 1000;
         
-        // Increment count on page load
         this.userCount++;
-        
-        // Store updated count
-        localStorage.setItem('artPortfolioUserCount', this.userCount.toString());
-        
-        // Update display
+        localStorage.setItem('mapperSyncUserCount', this.userCount.toString());
         this.updateUserCountDisplay();
-        
-        // Animate count up
         this.animateCountUp();
     }
 
@@ -49,7 +255,7 @@ class ArtPortfolio {
         const userCountElement = document.getElementById('userCount');
         if (!userCountElement) return;
 
-        const startCount = Math.max(0, this.userCount - 10);
+        const startCount = Math.max(0, this.userCount - 20);
         const endCount = this.userCount;
         const duration = 2000;
         const startTime = performance.now();
@@ -73,8 +279,8 @@ class ArtPortfolio {
     initNavigation() {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        const collectionsDropdown = document.getElementById('collectionsDropdown');
-        const dropdownMenu = document.getElementById('dropdownMenu');
+        const quickJumpDropdown = document.getElementById('quickJumpDropdown');
+        const quickJumpMenu = document.getElementById('quickJumpMenu');
 
         // Mobile menu toggle
         if (hamburger && navMenu) {
@@ -93,16 +299,15 @@ class ArtPortfolio {
             });
         }
 
-        // Collections dropdown functionality
-        if (collectionsDropdown && dropdownMenu) {
-            // Handle dropdown items
-            const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+        // Quick jump dropdown functionality
+        if (quickJumpMenu) {
+            const dropdownItems = quickJumpMenu.querySelectorAll('.dropdown-item');
             dropdownItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const collection = item.getAttribute('data-collection');
-                    this.filterCollections(collection);
-                    this.scrollToSection('collections');
+                    const continent = item.getAttribute('data-continent');
+                    this.navigateToContinent(continent);
+                    this.scrollToSection('explorer');
                 });
             });
         }
@@ -120,161 +325,395 @@ class ArtPortfolio {
         });
     }
 
-    // Collections Functionality
-    initCollections() {
-        this.collections = [
-            {
-                id: 1,
-                title: 'Forest Dreams',
-                category: 'abstract',
-                image: 'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Abstract interpretation of forest landscapes'
-            },
-            {
-                id: 2,
-                title: 'Mountain Serenity',
-                category: 'nature',
-                image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Peaceful mountain photography'
-            },
-            {
-                id: 3,
-                title: 'Clean Lines',
-                category: 'minimal',
-                image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Minimalist design approach'
-            },
-            {
-                id: 4,
-                title: 'Nature Sketches',
-                category: 'sketch',
-                image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Hand-drawn nature illustrations'
-            },
-            {
-                id: 5,
-                title: 'Digital Wilderness',
-                category: 'digital',
-                image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Digital art inspired by wilderness'
-            },
-            {
-                id: 6,
-                title: 'Ocean Waves',
-                category: 'abstract',
-                image: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Abstract ocean wave patterns'
-            },
-            {
-                id: 7,
-                title: 'Sunset Valley',
-                category: 'nature',
-                image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Golden hour valley photography'
-            },
-            {
-                id: 8,
-                title: 'Simple Forms',
-                category: 'minimal',
-                image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Geometric minimal compositions'
-            },
-            {
-                id: 9,
-                title: 'Botanical Studies',
-                category: 'sketch',
-                image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-                description: 'Detailed plant sketches'
-            }
-        ];
+    // Globe Interaction
+    initGlobeInteraction() {
+        const continents = document.querySelectorAll('.continent');
+        
+        continents.forEach(continent => {
+            continent.addEventListener('click', () => {
+                const continentId = continent.getAttribute('data-continent');
+                this.navigateToContinent(continentId);
+                this.scrollToSection('explorer');
+            });
 
-        this.renderCollections();
-        this.initCollectionFilters();
+            // Add keyboard support
+            continent.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const continentId = continent.getAttribute('data-continent');
+                    this.navigateToContinent(continentId);
+                    this.scrollToSection('explorer');
+                }
+            });
+
+            // Make focusable
+            continent.setAttribute('tabindex', '0');
+        });
     }
 
-    renderCollections(filter = 'all') {
-        const collectionsGrid = document.getElementById('collectionsGrid');
-        if (!collectionsGrid) return;
+    // Explorer Functionality
+    initExplorer() {
+        this.renderContinents();
+    }
 
-        const filteredCollections = filter === 'all' 
-            ? this.collections 
-            : this.collections.filter(item => item.category === filter);
+    renderContinents() {
+        const continentsGrid = document.getElementById('continentsView');
+        if (!continentsGrid) return;
 
-        collectionsGrid.innerHTML = filteredCollections.map(item => `
-            <div class="collection-item" data-category="${item.category}">
-                <img src="${item.image}" alt="${item.title}" loading="lazy">
-                <div class="collection-info">
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
+        const continentsHTML = Object.entries(this.mapData).map(([id, continent]) => `
+            <div class="continent-card" data-continent="${id}" tabindex="0">
+                <div class="card-image">
+                    ${this.getContinentIcon(id)}
+                </div>
+                <div class="card-content">
+                    <h3>${continent.name}</h3>
+                    <p>${continent.description}</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-flag"></i> ${continent.stats.countries} countries</span>
+                        <span><i class="fas fa-users"></i> ${continent.stats.population}</span>
+                        <span><i class="fas fa-expand-arrows-alt"></i> ${continent.stats.area}</span>
+                    </div>
                 </div>
             </div>
         `).join('');
 
-        // Add animation to new items
-        const items = collectionsGrid.querySelectorAll('.collection-item');
-        items.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-    }
+        continentsGrid.innerHTML = continentsHTML;
 
-    initCollectionFilters() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Get filter value and apply
-                const filter = button.getAttribute('data-filter');
-                this.filterCollections(filter);
+        // Add click handlers
+        const continentCards = continentsGrid.querySelectorAll('.continent-card');
+        continentCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const continentId = card.getAttribute('data-continent');
+                this.navigateToContinent(continentId);
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const continentId = card.getAttribute('data-continent');
+                    this.navigateToContinent(continentId);
+                }
             });
         });
     }
 
-    filterCollections(filter) {
-        this.currentFilter = filter;
-        this.renderCollections(filter);
-        
-        // Update active filter button
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
+    renderCountries(continentId) {
+        const countriesGrid = document.getElementById('countriesView');
+        if (!countriesGrid || !this.mapData[continentId]) return;
+
+        const continent = this.mapData[continentId];
+        const countriesHTML = Object.entries(continent.countries).map(([id, country]) => `
+            <div class="country-card" data-country="${id}" tabindex="0">
+                <div class="card-image">
+                    🏛️
+                </div>
+                <div class="card-content">
+                    <h3>${country.name}</h3>
+                    <p>${country.description}</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-map"></i> ${Object.keys(country.states).length} states/provinces</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        countriesGrid.innerHTML = countriesHTML;
+
+        // Add click handlers
+        const countryCards = countriesGrid.querySelectorAll('.country-card');
+        countryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const countryId = card.getAttribute('data-country');
+                this.navigateToCountry(countryId);
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const countryId = card.getAttribute('data-country');
+                    this.navigateToCountry(countryId);
+                }
+            });
         });
+    }
+
+    renderStates(continentId, countryId) {
+        const statesGrid = document.getElementById('statesView');
+        if (!statesGrid || !this.mapData[continentId] || !this.mapData[continentId].countries[countryId]) return;
+
+        const country = this.mapData[continentId].countries[countryId];
+        const statesHTML = Object.entries(country.states).map(([id, state]) => `
+            <div class="state-card" data-state="${id}" tabindex="0">
+                <div class="card-image">
+                    🗺️
+                </div>
+                <div class="card-content">
+                    <h3>${state.name}</h3>
+                    <div class="city-list">
+                        ${state.cities.map(city => `<span class="city-tag">${city}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        statesGrid.innerHTML = statesHTML;
+    }
+
+    navigateToContinent(continentId) {
+        if (!this.mapData[continentId]) return;
+
+        this.currentContinent = continentId;
+        this.currentCountry = null;
+        this.currentView = 'countries';
+        this.navigationHistory.push({ type: 'continent', id: continentId });
+
+        this.renderCountries(continentId);
+        this.updateBreadcrumb();
+        this.showView('countries');
+    }
+
+    navigateToCountry(countryId) {
+        if (!this.currentContinent || !this.mapData[this.currentContinent].countries[countryId]) return;
+
+        this.currentCountry = countryId;
+        this.currentView = 'states';
+        this.navigationHistory.push({ type: 'country', id: countryId });
+
+        this.renderStates(this.currentContinent, countryId);
+        this.updateBreadcrumb();
+        this.showView('states');
+    }
+
+    navigateBack() {
+        if (this.navigationHistory.length === 0) return;
+
+        this.navigationHistory.pop(); // Remove current level
+
+        if (this.navigationHistory.length === 0) {
+            // Back to continents
+            this.currentView = 'continents';
+            this.currentContinent = null;
+            this.currentCountry = null;
+            this.showView('continents');
+        } else {
+            const lastLevel = this.navigationHistory[this.navigationHistory.length - 1];
+            if (lastLevel.type === 'continent') {
+                // Back to countries
+                this.currentView = 'countries';
+                this.currentCountry = null;
+                this.showView('countries');
+            }
+        }
+
+        this.updateBreadcrumb();
+    }
+
+    showView(viewType) {
+        const views = ['continentsView', 'countriesView', 'statesView'];
+        views.forEach(view => {
+            const element = document.getElementById(view);
+            if (element) {
+                element.style.display = view === `${viewType}View` ? 'grid' : 'none';
+            }
+        });
+
+        const backButton = document.getElementById('backButton');
+        if (backButton) {
+            backButton.style.display = viewType === 'continents' ? 'none' : 'inline-flex';
+        }
+    }
+
+    updateBreadcrumb() {
+        const breadcrumb = document.getElementById('breadcrumb');
+        if (!breadcrumb) return;
+
+        let breadcrumbHTML = '<span class="breadcrumb-item" data-level="continents">Continents</span>';
+
+        if (this.currentContinent) {
+            const continentName = this.mapData[this.currentContinent].name;
+            breadcrumbHTML += ` <i class="fas fa-chevron-right"></i> <span class="breadcrumb-item" data-level="countries">${continentName}</span>`;
+        }
+
+        if (this.currentCountry) {
+            const countryName = this.mapData[this.currentContinent].countries[this.currentCountry].name;
+            breadcrumbHTML += ` <i class="fas fa-chevron-right"></i> <span class="breadcrumb-item active" data-level="states">${countryName}</span>`;
+        }
+
+        breadcrumb.innerHTML = breadcrumbHTML;
+
+        // Add click handlers to breadcrumb items
+        const breadcrumbItems = breadcrumb.querySelectorAll('.breadcrumb-item');
+        breadcrumbItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const level = item.getAttribute('data-level');
+                if (level === 'continents') {
+                    this.resetToContinent();
+                } else if (level === 'countries' && this.currentContinent) {
+                    this.resetToCountries();
+                }
+            });
+        });
+    }
+
+    resetToContinent() {
+        this.currentView = 'continents';
+        this.currentContinent = null;
+        this.currentCountry = null;
+        this.navigationHistory = [];
+        this.showView('continents');
+        this.updateBreadcrumb();
+    }
+
+    resetToCountries() {
+        this.currentView = 'countries';
+        this.currentCountry = null;
+        this.navigationHistory = this.navigationHistory.slice(0, 1); // Keep only continent
+        this.showView('countries');
+        this.updateBreadcrumb();
+    }
+
+    getContinentIcon(continentId) {
+        const icons = {
+            'north-america': '🌎',
+            'south-america': '🌎',
+            'europe': '🏰',
+            'asia': '🏯',
+            'africa': '🦁',
+            'oceania': '🏝️'
+        };
+        return icons[continentId] || '🌍';
+    }
+
+    // Maps Carousel
+    initMapsCarousel() {
+        const mapsCarousel = document.getElementById('mapsCarousel');
+        if (!mapsCarousel) return;
+
+        const featuredMaps = [
+            {
+                name: 'California',
+                description: 'The Golden State with diverse landscapes from beaches to mountains.',
+                cities: ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento'],
+                pins: [
+                    { top: '60%', left: '15%', city: 'Los Angeles' },
+                    { top: '25%', left: '20%', city: 'San Francisco' },
+                    { top: '75%', left: '18%', city: 'San Diego' },
+                    { top: '35%', left: '25%', city: 'Sacramento' }
+                ]
+            },
+            {
+                name: 'Texas',
+                description: 'The Lone Star State, known for its size and diverse culture.',
+                cities: ['Houston', 'Dallas', 'Austin', 'San Antonio'],
+                pins: [
+                    { top: '70%', left: '75%', city: 'Houston' },
+                    { top: '40%', left: '70%', city: 'Dallas' },
+                    { top: '60%', left: '60%', city: 'Austin' },
+                    { top: '75%', left: '55%', city: 'San Antonio' }
+                ]
+            },
+            {
+                name: 'New York',
+                description: 'The Empire State, home to the city that never sleeps.',
+                cities: ['New York City', 'Albany', 'Buffalo', 'Rochester'],
+                pins: [
+                    { top: '70%', left: '80%', city: 'New York City' },
+                    { top: '45%', left: '70%', city: 'Albany' },
+                    { top: '35%', left: '25%', city: 'Buffalo' },
+                    { top: '40%', left: '35%', city: 'Rochester' }
+                ]
+            }
+        ];
+
+        const mapsHTML = featuredMaps.map(map => `
+            <div class="map-card">
+                <div class="map-image">
+                    🗺️
+                    <div class="map-pins">
+                        ${map.pins.map(pin => `
+                            <div class="map-pin" style="top: ${pin.top}; left: ${pin.left};" 
+                                 title="${pin.city}" data-city="${pin.city}"></div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="map-info">
+                    <h3>${map.name}</h3>
+                    <p>${map.description}</p>
+                    <div class="city-list">
+                        ${map.cities.map(city => `<span class="city-tag">${city}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        mapsCarousel.innerHTML = mapsHTML;
+
+        // Add pin hover effects
+        const pins = mapsCarousel.querySelectorAll('.map-pin');
+        pins.forEach(pin => {
+            pin.addEventListener('mouseenter', () => {
+                const city = pin.getAttribute('data-city');
+                this.showPinTooltip(pin, city);
+            });
+
+            pin.addEventListener('mouseleave', () => {
+                this.hidePinTooltip();
+            });
+        });
+    }
+
+    showPinTooltip(pin, city) {
+        // Remove existing tooltip
+        this.hidePinTooltip();
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'pin-tooltip';
+        tooltip.textContent = city;
+        tooltip.style.cssText = `
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            pointer-events: none;
+            transform: translate(-50%, -100%);
+            margin-top: -5px;
+        `;
+
+        pin.appendChild(tooltip);
+    }
+
+    hidePinTooltip() {
+        const existingTooltip = document.querySelector('.pin-tooltip');
+        if (existingTooltip) {
+            existingTooltip.remove();
+        }
+    }
+
+    // Random Facts
+    generateRandomFact() {
+        const factElement = document.getElementById('randomFact');
+        if (!factElement) return;
+
+        const randomIndex = Math.floor(Math.random() * this.randomFacts.length);
+        const fact = this.randomFacts[randomIndex];
+
+        factElement.style.opacity = '0';
+        setTimeout(() => {
+            factElement.textContent = fact;
+            factElement.style.opacity = '1';
+        }, 300);
     }
 
     // Profile Form Functionality
     initProfileForm() {
         const profileForm = document.getElementById('profileForm');
-        const profilePicture = document.getElementById('profilePicture');
-        const imagePreview = document.getElementById('imagePreview');
         const profilePreview = document.getElementById('profilePreview');
 
         if (!profileForm) return;
-
-        // Handle file upload preview
-        if (profilePicture && imagePreview) {
-            profilePicture.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Profile Preview">`;
-                        this.updateProfilePreview();
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
 
         // Handle form submission
         profileForm.addEventListener('submit', (e) => {
@@ -283,123 +722,91 @@ class ArtPortfolio {
         });
 
         // Real-time preview updates
-        const nameInput = document.getElementById('artistName');
-        const bioInput = document.getElementById('artistBio');
-
-        if (nameInput) {
-            nameInput.addEventListener('input', () => this.updateProfilePreview());
-        }
-
-        if (bioInput) {
-            bioInput.addEventListener('input', () => this.updateProfilePreview());
-        }
+        const inputs = profileForm.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => this.updateProfilePreview());
+        });
     }
 
     updateProfilePreview() {
-        const nameInput = document.getElementById('artistName');
-        const bioInput = document.getElementById('artistBio');
+        const userName = document.getElementById('userName').value.trim();
+        const favoriteContinent = document.getElementById('favoriteContinent').value;
+        const favoriteCountry = document.getElementById('favoriteCountry').value.trim();
+        const mapType = document.getElementById('mapType').value;
+
         const previewName = document.getElementById('previewName');
-        const previewBio = document.getElementById('previewBio');
-        const previewImage = document.getElementById('previewImage');
+        const previewContinent = document.getElementById('previewContinent');
+        const previewCountry = document.getElementById('previewCountry');
+        const previewMapType = document.getElementById('previewMapType');
         const profilePreview = document.getElementById('profilePreview');
 
-        if (!nameInput || !bioInput || !previewName || !previewBio) return;
-
-        const name = nameInput.value.trim();
-        const bio = bioInput.value.trim();
-
-        if (name || bio) {
+        if (userName || favoriteContinent || favoriteCountry || mapType) {
             profilePreview.style.display = 'block';
-            previewName.textContent = name || 'Artist Name';
-            previewBio.textContent = bio || 'Artist bio will appear here...';
-
-            // Update preview image if available
-            const imagePreview = document.getElementById('imagePreview');
-            const img = imagePreview?.querySelector('img');
-            if (img && previewImage) {
-                previewImage.innerHTML = `<img src="${img.src}" alt="Profile Preview">`;
+            
+            if (previewName) previewName.textContent = userName || 'Explorer Name';
+            if (previewContinent) {
+                const continentName = favoriteContinent ? 
+                    this.mapData[favoriteContinent]?.name || favoriteContinent : 'Not selected';
+                previewContinent.textContent = continentName;
+            }
+            if (previewCountry) previewCountry.textContent = favoriteCountry || 'Not specified';
+            if (previewMapType) {
+                const mapTypeNames = {
+                    'political': 'Political Maps',
+                    'physical': 'Physical Maps',
+                    'topographic': 'Topographic Maps',
+                    'climate': 'Climate Maps',
+                    'satellite': 'Satellite Maps'
+                };
+                previewMapType.textContent = mapTypeNames[mapType] || 'Not selected';
             }
         }
     }
 
     handleProfileSubmission() {
-        const nameInput = document.getElementById('artistName');
-        const bioInput = document.getElementById('artistBio');
-        const profilePicture = document.getElementById('profilePicture');
+        const userName = document.getElementById('userName');
+        const nameError = document.getElementById('nameError');
 
-        // Validate form
-        if (!this.validateProfileForm()) {
+        // Clear previous errors
+        nameError.textContent = '';
+
+        // Validate name
+        if (!userName.value.trim()) {
+            nameError.textContent = 'Name is required';
+            return;
+        }
+
+        if (userName.value.trim().length < 2) {
+            nameError.textContent = 'Name must be at least 2 characters long';
             return;
         }
 
         // Create profile data
         const profileData = {
-            name: nameInput.value.trim(),
-            bio: bioInput.value.trim(),
+            name: userName.value.trim(),
+            continent: document.getElementById('favoriteContinent').value,
+            country: document.getElementById('favoriteCountry').value.trim(),
+            mapType: document.getElementById('mapType').value,
             timestamp: new Date().toISOString()
         };
 
-        // Handle profile picture
-        if (profilePicture.files[0]) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                profileData.image = e.target.result;
-                this.saveProfile(profileData);
-            };
-            reader.readAsDataURL(profilePicture.files[0]);
-        } else {
-            this.saveProfile(profileData);
-        }
-    }
-
-    validateProfileForm() {
-        const nameInput = document.getElementById('artistName');
-        const bioInput = document.getElementById('artistBio');
-        const nameError = document.getElementById('nameError');
-        const bioError = document.getElementById('bioError');
-
-        let isValid = true;
-
-        // Clear previous errors
-        nameError.textContent = '';
-        bioError.textContent = '';
-
-        // Validate name
-        if (!nameInput.value.trim()) {
-            nameError.textContent = 'Artist name is required';
-            isValid = false;
-        } else if (nameInput.value.trim().length < 2) {
-            nameError.textContent = 'Name must be at least 2 characters long';
-            isValid = false;
-        }
-
-        // Validate bio
-        if (!bioInput.value.trim()) {
-            bioError.textContent = 'Artist bio is required';
-            isValid = false;
-        } else if (bioInput.value.trim().length < 20) {
-            bioError.textContent = 'Bio must be at least 20 characters long';
-            isValid = false;
-        }
-
-        return isValid;
-    }
-
-    saveProfile(profileData) {
         // Save to localStorage
-        localStorage.setItem('artPortfolioProfile', JSON.stringify(profileData));
+        localStorage.setItem('mapperSyncProfile', JSON.stringify(profileData));
 
         // Show success message
         this.showProfileSuccess();
 
         // Reset form
         document.getElementById('profileForm').reset();
-        document.getElementById('imagePreview').innerHTML = '';
+        
+        // Update user count
+        this.userCount++;
+        localStorage.setItem('mapperSyncUserCount', this.userCount.toString());
+        this.updateUserCountDisplay();
     }
 
     showProfileSuccess() {
-        const profilePreview = document.getElementById('profilePreview');
-        const successMessage = profilePreview.querySelector('.success-message');
+        const successMessage = document.querySelector('.success-message');
         
         if (successMessage) {
             successMessage.style.display = 'flex';
@@ -407,29 +814,7 @@ class ArtPortfolio {
             
             setTimeout(() => {
                 successMessage.style.display = 'none';
-            }, 3000);
-        }
-    }
-
-    loadStoredProfile() {
-        const storedProfile = localStorage.getItem('artPortfolioProfile');
-        if (storedProfile) {
-            const profileData = JSON.parse(storedProfile);
-            const previewName = document.getElementById('previewName');
-            const previewBio = document.getElementById('previewBio');
-            const previewImage = document.getElementById('previewImage');
-            const profilePreview = document.getElementById('profilePreview');
-
-            if (previewName && previewBio && profilePreview) {
-                previewName.textContent = profileData.name;
-                previewBio.textContent = profileData.bio;
-                
-                if (profileData.image && previewImage) {
-                    previewImage.innerHTML = `<img src="${profileData.image}" alt="Stored Profile">`;
-                }
-                
-                profilePreview.style.display = 'block';
-            }
+            }, 4000);
         }
     }
 
@@ -446,7 +831,6 @@ class ArtPortfolio {
     }
 
     handleContactSubmission(e) {
-        const formData = new FormData(e.target);
         const submitBtn = e.target.querySelector('.submit-btn');
         
         // Show loading state
@@ -500,9 +884,81 @@ class ArtPortfolio {
         setTimeout(() => {
             notification.style.animation = 'slideOutRight 0.5s ease';
             setTimeout(() => {
-                document.body.removeChild(notification);
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
             }, 500);
         }, 5000);
+    }
+
+    // Theme Toggle Functionality
+    initThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('change', () => {
+                this.toggleTheme();
+            });
+        }
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('mapperSyncTheme', newTheme);
+        
+        // Update toggle state
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.checked = newTheme === 'dark';
+        }
+    }
+
+    // Load Stored Preferences
+    loadStoredPreferences() {
+        // Load theme preference
+        const storedTheme = localStorage.getItem('mapperSyncTheme');
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.checked = storedTheme === 'dark';
+            }
+        }
+
+        // Load stored profile
+        const storedProfile = localStorage.getItem('mapperSyncProfile');
+        if (storedProfile) {
+            const profileData = JSON.parse(storedProfile);
+            const previewName = document.getElementById('previewName');
+            const previewContinent = document.getElementById('previewContinent');
+            const previewCountry = document.getElementById('previewCountry');
+            const previewMapType = document.getElementById('previewMapType');
+            const profilePreview = document.getElementById('profilePreview');
+
+            if (previewName && previewContinent && previewCountry && previewMapType && profilePreview) {
+                previewName.textContent = profileData.name;
+                
+                const continentName = profileData.continent ? 
+                    this.mapData[profileData.continent]?.name || profileData.continent : 'Not selected';
+                previewContinent.textContent = continentName;
+                
+                previewCountry.textContent = profileData.country || 'Not specified';
+                
+                const mapTypeNames = {
+                    'political': 'Political Maps',
+                    'physical': 'Physical Maps',
+                    'topographic': 'Topographic Maps',
+                    'climate': 'Climate Maps',
+                    'satellite': 'Satellite Maps'
+                };
+                previewMapType.textContent = mapTypeNames[profileData.mapType] || 'Not selected';
+                
+                profilePreview.style.display = 'block';
+            }
+        }
     }
 
     // Scroll Animations
@@ -521,7 +977,7 @@ class ArtPortfolio {
         }, observerOptions);
 
         // Observe elements for animation
-        const animateElements = document.querySelectorAll('.art-type-card, .collection-item, .profile-card');
+        const animateElements = document.querySelectorAll('.continent-card, .country-card, .state-card, .map-card, .creator-card, .fact-card');
         animateElements.forEach(el => {
             el.classList.add('fade-in');
             observer.observe(el);
@@ -572,12 +1028,12 @@ class ArtPortfolio {
         return this.userCount;
     }
 
-    getCollections() {
-        return this.collections;
+    getCurrentView() {
+        return this.currentView;
     }
 
-    getCurrentFilter() {
-        return this.currentFilter;
+    getMapData() {
+        return this.mapData;
     }
 }
 
@@ -617,7 +1073,7 @@ class PerformanceMonitor {
 
     logMetrics() {
         const loadTime = performance.now() - this.startTime;
-        console.log('Art Portfolio Performance Metrics:', {
+        console.log('MapperSync Performance Metrics:', {
             loadTime: `${loadTime.toFixed(2)}ms`,
             lcp: this.metrics.lcp ? `${this.metrics.lcp.toFixed(2)}ms` : 'N/A',
             fid: this.metrics.fid ? `${this.metrics.fid.toFixed(2)}ms` : 'N/A',
@@ -691,10 +1147,29 @@ class AccessibilityHelper {
     }
 }
 
+// Global Functions
+window.scrollToSection = function(sectionId) {
+    if (window.MapperSync) {
+        window.MapperSync.scrollToSection(sectionId);
+    }
+};
+
+window.navigateBack = function() {
+    if (window.MapperSync) {
+        window.MapperSync.navigateBack();
+    }
+};
+
+window.generateRandomFact = function() {
+    if (window.MapperSync) {
+        window.MapperSync.generateRandomFact();
+    }
+};
+
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize main application
-    const artPortfolio = new ArtPortfolio();
+    const mapperSync = new MapperSync();
     
     // Initialize performance monitoring
     const performanceMonitor = new PerformanceMonitor();
@@ -702,8 +1177,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize accessibility helper
     const accessibilityHelper = new AccessibilityHelper();
     
-    // Make portfolio globally available for debugging
-    window.ArtPortfolio = artPortfolio;
+    // Make MapperSync globally available
+    window.MapperSync = mapperSync;
     
     // Log performance metrics after page load
     window.addEventListener('load', () => {
@@ -712,15 +1187,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
     
-    console.log('🎨 Art Portfolio initialized successfully!');
+    console.log('🌍 MapperSync initialized successfully!');
 });
-
-// Global utility functions
-window.scrollToSection = function(sectionId) {
-    if (window.ArtPortfolio) {
-        window.ArtPortfolio.scrollToSection(sectionId);
-    }
-};
 
 // Service Worker Registration (for future PWA features)
 if ('serviceWorker' in navigator) {
@@ -734,12 +1202,12 @@ if ('serviceWorker' in navigator) {
 
 // Error Handling
 window.addEventListener('error', (e) => {
-    console.error('Art Portfolio Error:', e.error);
+    console.error('MapperSync Error:', e.error);
     // Could send to error reporting service in production
 });
 
 window.addEventListener('unhandledrejection', (e) => {
-    console.error('Art Portfolio Unhandled Promise Rejection:', e.reason);
+    console.error('MapperSync Unhandled Promise Rejection:', e.reason);
     // Could send to error reporting service in production
 });
 
@@ -780,7 +1248,7 @@ style.textContent = `
     }
     
     .keyboard-navigation *:focus {
-        outline: 2px solid var(--forest-dark) !important;
+        outline: 2px solid var(--ocean-blue) !important;
         outline-offset: 2px !important;
     }
 `;
@@ -788,5 +1256,5 @@ document.head.appendChild(style);
 
 // Export for module systems
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { ArtPortfolio, PerformanceMonitor, AccessibilityHelper };
+    module.exports = { MapperSync, PerformanceMonitor, AccessibilityHelper };
 }
