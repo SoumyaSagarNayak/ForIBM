@@ -113,14 +113,17 @@ _No React, no jQuery, no APIs, no external frameworks._
 
 ---
 
-📁 MediCore-GroupTask/
-├── 📁 assets/           # Images, icons, SVGs
-├── 📁 css/              # All stylesheets
-│   └── styles.css
-├── 📁 js/               # Script files
-│   └── main.js
-├── index.html          # Main entry point
-└── README.md           # Project documentation
+
+<pre>
+📁 ForIBM/
+├── 📁 assets/           # Images, icons, SVGs  
+├── 📁 css/              # All stylesheets  
+│   └── styles.css  
+├── 📁 js/               # Script files  
+│   └── main.js  
+├── index.html           # Main entry point  
+└── README.md            # Project documentation  
+</pre>
 ---
 
 ## 🚀 Getting Started
